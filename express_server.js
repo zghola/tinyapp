@@ -9,7 +9,7 @@ const urlDatabase = {
   "9sm5xK": "http://www.google.com"
 };
 
-/*app.get("/", (req, res) => {
+app.get("/", (req, res) => {
   res.send("Hello!");
 });
 app.get("/urls.json", (req, res) => {
@@ -26,11 +26,16 @@ app.get("/hello", (req, res) => {
    
    app.get("/fetch", (req, res) => {
     res.send(`a = ${a}`);
-   });*/
+   });
 
    app.get("/urls", (req, res) => {
     const templateVars = { urls: urlDatabase };
     res.render("urls_index", templateVars);
+  });
+
+  app.get("/urls/:shortURL", (req, res) => {
+    const templateVars = { shortURL: req.params.shortURL, longURL: req.params.shortURL/* What goes here? */ };
+    res.render("urls_show", templateVars);
   });
 
 app.listen(PORT, () => {
