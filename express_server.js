@@ -47,6 +47,11 @@ app.get("/urls/:shortURL", (req, res) => {
   res.render("urls_show", templateVars);
 });
 
+app.get("/u/:shortURL", (req, res) => {
+  const longURL = urlDatabase["b2xVn2"]
+  res.redirect(longURL);
+});
+
 app.post("/urls", (req, res) => {
   console.log(req.body);  // Log the POST request body to the console
   const longURL = req.body.longURL
@@ -54,9 +59,8 @@ app.post("/urls", (req, res) => {
 
   urlDatabase[shortURL] = longURL
 
-  
-
   res.redirect(`/urls/${shortURL}`)
+ 
 });
 
 app.listen(PORT, () => {
