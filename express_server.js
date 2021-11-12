@@ -161,7 +161,8 @@ app.post("/urls/:shortURL", (req, res) => {
 })
 
 app.post("/logout", (req, res) => {
-  res.cookie('user_id') 
+  //res.cookie('user_id') 
+  res.clearCookie('user_id');
    res.redirect("/urls")
   
 })
@@ -207,7 +208,7 @@ app.post("/register", (req, res) => {
   }else{
     res.status(400).send("not a valid email or password")
   }
-  
+
 });
 
 app.listen(PORT, () => {
